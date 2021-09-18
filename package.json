@@ -1,8 +1,8 @@
 {
     "name": "ask-config",
     "displayName": "ask-config",
-    "description": "ionic regular usage code",
-    "version": "0.0.1",
+    "description": "ionic regular usage code by Suresh Kumar A",
+    "version": "1.0.0",
     "engines": {
         "vscode": "^1.60.0"
     },
