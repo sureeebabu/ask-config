@@ -1,13 +1,14 @@
 {
     "name": "ask-config",
     "displayName": "ask-config",
-    "description": "ionic regular usage code",
-    "version": "1.0.0",
+    "description": "Ionic framework regular usage code",
+    "version": "1.0.1",
     "publisher": "sureeebabu",
     "repository": "https://github.com/sureeebabu/ask-config",
     "engines": {
         "vscode": "^1.60.0"
     },
+    "icon": "img/ask.png",
     "categories": [
         "Snippets"
     ],
