@@ -212,5 +212,55 @@
 			""
 		],
 		"description": "custom scss"
-	}
+	},
+	"getData": {
+		"prefix": "ask-getData",
+		"body": [
+			"this.config.loader('Please Wait ...');",
+			"this.config.getData(`$1`).subscribe(res => {",
+			"    const response: any = res;",
+			"    console.log(response);",
+			"    this.config.loaderDismiss();",
+			"}, error => {",
+			"    this.config.loaderDismiss();",
+			"    console.log(error);",
+			"});",
+			""
+		],
+		"description": "getData"
+	},
+	"postData": {
+		"prefix": "ask-postData",
+		"body": [
+			"const values = {",
+			"    $1: $2",
+			"};",
+			"this.config.loader('Please Wait ...');",
+			"this.config.postData(``, values).subscribe((res) => {",
+			"    const response: any = res;",
+			"    console.log(response);",
+			"    if (response.result === true) {",
+			"        this.JSON = response.data;",
+			"        this.config.loaderDismiss();",
+			"    }",
+			"    else {",
+			"        this.config.loaderDismiss();",
+			"    }",
+			"}, err => {",
+			"    this.config.loaderDismiss();",
+			"    console.log(err);",
+			"});",
+			""
+		],
+		"description": "postData"
+	},
+	"localstorage": {
+		"prefix": "ask-ls",
+		"body": [
+		  "lsUserDetails: any = [];",
+		  "this.lsUserDetails = JSON.parse(localStorage.getItem('lsUserDetails'));",
+		  "console.log(lsUserDetails);"
+		],
+		"description": "localstorage"
+	  }
 }
