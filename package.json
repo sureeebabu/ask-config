@@ -2,7 +2,7 @@
     "name": "ask-config",
     "displayName": "ask-config",
     "description": "Ionic framework regular usage code",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "publisher": "sureeebabu",
     "repository": "https://github.com/sureeebabu/ask-config",
     "engines": {
@@ -24,6 +24,10 @@
             },
             {
                 "language": "css",
+                "path": "./snippets/snippets.code-snippets"
+            },
+            {
+                "language": "html",
                 "path": "./snippets/snippets.code-snippets"
             }
         ]

@@ -257,10 +257,147 @@
 	"localstorage": {
 		"prefix": "ask-ls",
 		"body": [
-		  "lsUserDetails: any = [];",
-		  "this.lsUserDetails = JSON.parse(localStorage.getItem('lsUserDetails'));",
-		  "console.log(lsUserDetails);"
+			"lsUserDetails: any = [];",
+			"this.lsUserDetails = JSON.parse(localStorage.getItem('lsUserDetails'));",
+			"console.log(lsUserDetails);"
 		],
 		"description": "localstorage"
-	  }
+	},
+	"divCenter": {
+		"prefix": "ask-divcenter",
+		"body": [
+			".divCenter {",
+			"    text-align: center;",
+			"    position: absolute;",
+			"    left: 0;",
+			"    right: 0;",
+			"    top: 50%;",
+			"    transform: translateY(-50%);",
+			"}",
+			""
+		],
+		"description": "divCenter"
+	},
+	"Remove Box Shadow": {
+		"prefix": "ask-removeboxshadow",
+		"body": [
+			"textarea:active,",
+			"input:active,",
+			"textarea:focus,",
+			"input:focus,",
+			"button:focus,",
+			"button:active,",
+			"button:hover,",
+			"label:focus,",
+			".btn:active,",
+			".btn.active,",
+			"ion-select {",
+			"  outline: 0px !important;",
+			"  -webkit-appearance: none;",
+			"  box-shadow: none !important;",
+			"}"
+		],
+		"description": "Remove Box Shadow"
+	},
+	"icon with text below": {
+		"prefix": "ask-ibtntxt",
+		"body": [
+			"ion-button div {",
+			"    display: flex;",
+			"    flex-flow: column nowrap;",
+			"    align-items: center;",
+			"    font-size:10px !important;",
+			"    color: #efefef;",
+			"}",
+			""
+		],
+		"description": "icon with text below"
+	},
+	"ion-thumbnail": {
+		"prefix": "ask-ionthumbnail ",
+		"body": [
+			"ion-thumbnail {",
+			"    width: 75% !important;",
+			"    height: 75% !important;",
+			"    max-width: 80px !important; //any size",
+			"    max-height: 80px !important; //any size ",
+			"    border: 1px solid #4F4D4B;",
+			"}"
+		],
+		"description": "ion-thumbnail"
+	},
+	"Basic Npm plugins": {
+		"prefix": "ask-npm",
+		"body": [
+			"npm i font-awesome bootstrap bootstrap-icons jquery animate.css@3.7.0 popper.js ng2-search-filter @ng-select/ng-select",
+			"global.scss",
+			"@import \"~animate.css/animate.css\";",
+			"@import \"~font-awesome/css/font-awesome.css\";",
+			"@import \"~bootstrap-icons/font/bootstrap-icons.css\";",
+			"@import \"~bootstrap/dist/css/bootstrap.css\";",
+			"@import \"./theme/custom.scss\";",
+			"",
+			"angular.json",
+			"Script : ",
+			"[",
+			"  \"./node_modules/bootstrap/dist/js/bootstrap.min.js\",",
+			"  \"./node_modules/jquery/dist/jquery.min.js\"",
+			"],"
+		],
+		"description": "Basic Npm plugins"
+	},
+	"HttpInterceptor": {
+		"prefix": "ask-HttpInterceptor",
+		"body": [
+			"import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';",
+			"import { Injectable } from '@angular/core';",
+			"import { Observable } from 'rxjs';",
+			"",
+			"@Injectable()",
+			"export class InterceptorsService implements HttpInterceptor {",
+			"  constructor() { }",
+			"  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {",
+			"    request = request.clone({",
+			"      setHeaders: {",
+			"        'Content-Type': 'application/json'",
+			"      }",
+			"    });",
+			"    console.log(request);",
+			"    return next.handle(request);",
+			"  }",
+			"}",
+			""
+		],
+		"description": "HttpInterceptor"
+	},
+	"import HTTP_INTERCEPTORS": {
+		"prefix": "ask-ImportHTTPINTERCEPTORS",
+		"body": [
+			"{",
+			"      provide: HTTP_INTERCEPTORS,",
+			"      useClass: InterceptorsService,",
+			"      multi: true",
+			"}"
+		],
+		"description": "import HTTP_INTERCEPTORS"
+	},
+	"network_security_config": {
+		"prefix": "ask-network_security_config",
+		"body": [
+			"<?xml version=\"1.0\" encoding=\"utf-8\"?>",
+			"<network-security-config>",
+			"    <base-config cleartextTrafficPermitted=\"true\">",
+			"        <trust-anchors>",
+			"            <certificates src=\"system\" />",
+			"        </trust-anchors>",
+			"    </base-config>",
+			"    <domain-config cleartextTrafficPermitted=\"true\">",
+			"        <domain includeSubdomains=\"true\">doamin.com</domain>",
+			"        <domain includeSubdomains=\"true\">http://domain.com</domain>",
+			"    </domain-config>",
+			"</network-security-config>",
+			""
+		],
+		"description": "network_security_config"
+	}
 }
