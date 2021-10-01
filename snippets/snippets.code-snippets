@@ -326,6 +326,17 @@
 		],
 		"description": "ion-thumbnail"
 	},
+	"background image": {
+		"prefix": "ask-bgimg",
+		"body": [
+			"ion-content {",
+			"  --background: none;",
+			"  background: url(\"/assets/bgscreen.jpeg\") no-repeat 0 0;",
+			"  background-size: cover;",
+			"}"
+		],
+		"description": "background image"
+	},
 	"Basic Npm plugins": {
 		"prefix": "ask-npm",
 		"body": [
@@ -345,6 +356,34 @@
 			"],"
 		],
 		"description": "Basic Npm plugins"
+	},
+	"Auth Guard": {
+		"prefix": "ask-guard",
+		"body": [
+			"import { Injectable } from '@angular/core';",
+			"import { CanActivate,  Router } from '@angular/router';",
+			"",
+			"@Injectable({",
+			"  providedIn: 'root'",
+			"})",
+			"export class AuthGuard implements CanActivate {",
+			"",
+			"  constructor(private router: Router) { }",
+			"",
+			"  canActivate(): boolean {",
+			"    console.log(localStorage.getItem('token'));",
+			"    if (localStorage.getItem('token')) {",
+			"      return true;",
+			"    }",
+			"    else {",
+			"      this.router.navigate(['login']);",
+			"    }",
+			"  }",
+			"",
+			"}",
+			""
+		],
+		"description": "Auth Guard"
 	},
 	"HttpInterceptor": {
 		"prefix": "ask-HttpInterceptor",
@@ -399,5 +438,46 @@
 			""
 		],
 		"description": "network_security_config"
+	},
+	"Login": {
+		"prefix": "ask-login",
+		"body": [
+			"this.config.loader('Please wait...');",
+			"    this.config.postData(`$1`, this.loginValidate).subscribe((res) => {",
+			"      const response: any = res;",
+			"      if (response.result === true) {",
+			"        localStorage.setItem('lsUserDetails', JSON.stringify(response.data));",
+			"         localStorage.setItem('token', 'true');",
+			"        this.config.loaderDismiss();",
+			"        this.loginForm.reset();",
+			"        this.menuCtrl.enable(true);",
+			"        this.router.navigate(['home']);",
+			"      }",
+			"      else {",
+			"        this.config.loaderDismiss();",
+			"      }",
+			"    }, err => {",
+			"      this.config.loaderDismiss();",
+			"      console.log(err);",
+			"    });",
+			""
+		],
+		"description": "Login"
+	},
+	"call method": {
+		"prefix": "ask-callmethod",
+		"body": [
+			"// above @component",
+			"declare var window;",
+			"//constructor",
+			"window.app = this;",
+			"",
+			"callmethod() {",
+			"   if (localStorage.getItem('lsUserDetails') != null) {",
+			"     this.lsUserDetails = JSON.parse(localStorage.getItem('lsUserDetails'));",
+			"   }",
+			"}"
+		],
+		"description": "call method"
 	}
 }
