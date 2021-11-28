@@ -5,3 +5,6 @@ vsce package
 ask-getData    --> Get Method
 ask-postData   --> Post Method
 ask-divCenter  --> To make div Center
+ask-table      --> Generate Responsive Table
+ask-translate
+ask-scss
