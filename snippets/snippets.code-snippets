@@ -1117,5 +1117,38 @@
 			""
 		],
 		"description": "File Upload"
+	},
+	"Group By": {
+		"prefix": "ask-group",
+		"body": [
+			" groupBy(collection: any[], property: string): any[] {",
+			"    // prevents the application from breaking if the array of objects doesn't exist yet",
+			"    if (!collection) {",
+			"      return null;",
+			"    }",
+			"    const groupedCollection = collection.reduce((previous, current) => {",
+			"      if (!previous[current[property]]) {",
+			"        previous[current[property]] = [current];",
+			"      } else {",
+			"        previous[current[property]].push(current);",
+			"      }",
+			"      return previous;",
+			"    }, {});",
+			"    // this will return an array of objects, each object containing a group of objects",
+			"    return Object.keys(groupedCollection).map(key => ({ key, value: groupedCollection[key] }));",
+			"  }"
+		],
+		"description": "Group By"
+	},
+	"Hardware Back Button Exit App": {
+		"prefix": "ask-hardwarebackexit",
+		"body": [
+			"this.platform.backButton.subscribe(async () => {",
+			"      if (this.router.isActive('/dashboard', true) && this.router.url === '/dashboard') {",
+			"        navigator['app'].exitApp();",
+			"      }",
+			"});"
+		],
+		"description": "Hardware Back Button Exit App"
 	}
 }
