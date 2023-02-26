@@ -1966,5 +1966,30 @@
 			"this.tempArr= response.data.filter((a) => a);"
 		],
 		"description": "Remove Empty from Array"
+	},
+	"Number Only": {
+		"prefix": "ask-numbersonly",
+		"body": [
+			"(keypress)=\"keyPressNumbers($event)\"",
+			"keyPressNumbers(event) {",
+			"    var charCode = (event.which) ? event.which : event.keyCode;",
+			"    // Only Numbers 0-9",
+			"    if ((charCode < 48 || charCode > 57)) {",
+			"      event.preventDefault();",
+			"      return false;",
+			"    } else {",
+			"      return true;",
+			"    }",
+			"  }"
+		],
+		"description": "Number Only"
+	},
+	"Prevent decimal value": {
+		"prefix": "ask-avoiddecimalinput",
+		"body": [
+			"<input inputmode=\"numeric\" class=\"form-control\" onkeydown=\"if(event.key==='.'){event.preventDefault();}\"",
+			"        oninput=\"event.target.value = event.target.value.replace(/[^0-9]*/g,'');\">"
+		],
+		"description": "Prevent decimal value"
 	}
 }
