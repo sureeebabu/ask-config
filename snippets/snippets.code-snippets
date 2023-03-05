@@ -1893,7 +1893,9 @@
 		"prefix": "ask-excelnpm",
 		"body": [
 			"npm install file-saver --save",
-			"npm install xlsx --save"
+			"npm install xlsx --save",
+			"npm install @capacitor/filesystem",
+			"npm i capacitor-blob-writer"
 		],
 		"description": "Npm Excel download"
 	},
@@ -1991,5 +1993,52 @@
 			"        oninput=\"event.target.value = event.target.value.replace(/[^0-9]*/g,'');\">"
 		],
 		"description": "Prevent decimal value"
+	},
+	"Npm Excel Export Download": {
+		"prefix": "ask-excelexport",
+		"body": [
+			"import { Injectable } from '@angular/core';",
+			"import * as XLSX from 'xlsx';",
+			"import { Directory } from '@capacitor/filesystem';",
+			"import write_blob from 'capacitor-blob-writer';",
+			"import { ConfigService } from '../config/config.service';",
+			"",
+			"const EXCEL_TYPE = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=UTF-8';",
+			"const EXCEL_EXTENSION = '.xlsx';",
+			"@Injectable({",
+			"  providedIn: 'root'",
+			"})",
+			"export class ExcelService {",
+			"",
+			"  constructor(",
+			"    private config: ConfigService",
+			"  ) { }",
+			"",
+			"  exportXL(data: any) {",
+			"    const filename = 'Visitors_' + new Date().getTime() + EXCEL_EXTENSION;",
+			"    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(data);",
+			"    // eslint-disable-next-line",
+			"    console.log('worksheet', worksheet);",
+			"    const workbook: XLSX.WorkBook = { Sheets: { data: worksheet }, SheetNames: ['data'] };",
+			"    const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });",
+			"    const excelData: Blob = new Blob([excelBuffer], {",
+			"      type: EXCEL_TYPE",
+			"    });",
+			"    console.log(excelData);",
+			"    write_blob({",
+			"      path: filename,",
+			"      directory: Directory.Documents,",
+			"      blob: excelData",
+			"    }).then((x) => {",
+			"      console.log(x);",
+			"      this.config.toastFn(`Download successfully`);",
+			"      // window.alert('Data saved to Documents');",
+			"    }).catch(function (e) {",
+			"      window.alert(e);",
+			"    });",
+			"  }",
+			"}"
+		],
+		"description": "Npm Excel Export Download"
 	}
 }
