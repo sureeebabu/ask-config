@@ -428,7 +428,7 @@
 	"Basic Npm plugins": {
 		"prefix": "ask-npm",
 		"body": [
-			"npm i font-awesome bootstrap bootstrap-icons jquery animate.css@3.7.0 popper.js ng2-search-filter @ng-select/ng-select",
+			"npm i font-awesome bootstrap bootstrap-icons jquery animate.css@3.7.0 popper.js ng2-search-filter @ng-select/ng-select ngx-countdown ng-otp-input",
 			"global.scss",
 			"@import \"~animate.css/animate.css\";",
 			"@import \"~font-awesome/css/font-awesome.css\";",
@@ -2040,5 +2040,76 @@
 			"}"
 		],
 		"description": "Npm Excel Export Download"
+	},
+	"Ionic capacitor Post Data": {
+		"prefix": "ask-postDataCap",
+		"body": [
+			" this.config.loader('Please Wait ...');",
+			"    this.config.postData(`$1`, values).subscribe({",
+			"      next: (res) => {",
+			"        // treat recieved data",
+			"        const response: any = res;",
+			"        console.log(response);",
+			"        if (response.result) {",
+			"          this.JSON= response.data;",
+			"        }",
+			"        else {",
+			"          this.JSON= [];",
+			"        }",
+			"        this.config.loaderDismiss();",
+			"      },",
+			"      error: (err) => {",
+			"        // treat error",
+			"        this.config.loaderDismiss();",
+			"        console.log(err);",
+			"      },",
+			"      complete: () => {",
+			"        // define on request complete logic",
+			"        // 'complete' is not the same as 'finalize'!!",
+			"        // this logic will not be executed if error is fired",
+			"      }",
+			"    });"
+		],
+		"description": "Ionic capacitor Post Data"
+	},
+	"Ionic capacitor Get Data": {
+		"prefix": "ask-getDataCap",
+		"body": [
+			" this.config.loader('Please Wait ...');",
+			"    this.config.getData(`$1`).subscribe({",
+			"      next: (res) => {",
+			"        // treat recieved data",
+			"        const response: any = res;",
+			"        console.log(response);",
+			"        if (response.result) {",
+			"          this.JSON= response.data;",
+			"        }",
+			"        else {",
+			"          this.JSON= [];",
+			"        }",
+			"        this.config.loaderDismiss();",
+			"      },",
+			"      error: (err) => {",
+			"        // treat error",
+			"        this.config.loaderDismiss();",
+			"        console.log(err);",
+			"      },",
+			"      complete: () => {",
+			"        // define on request complete logic",
+			"        // 'complete' is not the same as 'finalize'!!",
+			"        // this logic will not be executed if error is fired",
+			"      }",
+			"    });"
+		],
+		"description": "Ionic capacitor Get Data"
+	},
+	"Ionic Custom Toast": {
+		"prefix": "ask-toast",
+		"body": [
+			"ng add @ngneat/hot-toast",
+			"https://github.com/ngneat/hot-toast#installation",
+			"@import 'node_modules/@ngneat/hot-toast/src/styles/styles.scss';"
+		],
+		"description": "Ionic Custom Toast"
 	}
 }
